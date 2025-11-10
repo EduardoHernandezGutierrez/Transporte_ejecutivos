@@ -1,0 +1,108 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f2f2f2, #e0e0e0);
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: white;
+  border-bottom: 2px solid #ccc;
+}
+
+h1 {
+  color: #111;
+  margin-bottom: 0.3rem;
+}
+
+header p {
+  color: #444;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.reserva-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+}
+
+.reserva-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+label {
+  font-weight: 500;
+  color: #333;
+}
+
+input, select {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 1rem;
+  background: #fafafa;
+  color: #111;
+}
+
+input::placeholder {
+  color: #777;
+}
+
+.boton {
+  background: linear-gradient(90deg, #666, #444);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.boton:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #555, #333);
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  background: white;
+  border-top: 2px solid #ccc;
+}
+
+/* Adaptable a móviles */
+@media (max-width: 600px) {
+  .reserva-container {
+    padding: 1.5rem;
+  }
+
+  input, select {
+    font-size: 0.9rem;
+  }
+}
