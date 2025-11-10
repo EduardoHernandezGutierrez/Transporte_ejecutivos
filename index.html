@@ -1,267 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Transportes Ejecutivos</title>
-  <style>
-    /* Estilos básicos (puedes mover a style.css) */
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f2f2f2, #e0e0e0);
-      color: #222;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    header {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: white;
-      border-bottom: 2px solid #ccc;
-    }
-    h1 { color:#111; margin:0 0 .3rem 0; }
-    main { flex:1; display:flex; justify-content:center; align-items:flex-start; padding:2rem; }
-    .reserva-container {
-      background: #fff;
-      padding: 1.8rem;
-      border-radius: 12px;
-      width: 100%;
-      max-width: 680px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem 1rem;
-      align-items: center;
-    }
-    label { font-weight:600; color:#333; margin-bottom:.25rem; display:block; }
-    input[type="text"], input[type="tel"], input[type="date"], input[type="time"], select {
-      padding: .6rem;
-      border-radius:8px;
-      border:1px solid #ccc;
-      background:#fafafa;
-      font-size:1rem;
-      width:100%;
-      box-sizing:border-box;
-    }
-    .full { grid-column: 1 / -1; }
-    .boton {
-      display:inline-block;
-      background: linear-gradient(90deg,#666,#444);
-      color:white;
-      border:none;
-      border-radius:10px;
-      padding:.8rem 1rem;
-      font-weight:700;
-      cursor:pointer;
-      width:100%;
-      margin-top:.6rem;
-    }
-    .boton:hover { transform:translateY(-2px); }
-    .msg-ok {
-      background: #e6ffea;
-      color: #0a6b2f;
-      padding: .6rem .8rem;
-      border-radius:8px;
-      border: 1px solid #a6e3b0;
-      margin-top:.6rem;
-      display:none;
-    }
-    footer { text-align:center; padding:1rem; background:white; border-top:2px solid #ccc; font-size:.9rem; }
-    @media (max-width:720px){
-      .grid{ grid-template-columns: 1fr; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transporte Ejecutivos</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Transportes Ejecutivos</h1>
-    <p>Servicio de traslado aeropuerto, hotel, empresa o domicilio</p>
+    <h1>Transporte Ejecutivos</h1>
+    <p>Servicio de transporte entre aeropuerto, hotel, empresa y domicilio</p>
   </header>
 
   <main>
-    <div class="reserva-container">
-      <h2>Reserva tu traslado</h2>
-
-      <form id="reservaForm" autocomplete="off">
-        <div class="grid">
-          <div class="full">
-            <label for="nombre">Nombre completo</label>
-            <input id="nombre" type="text" placeholder="Tu nombre completo" required />
-          </div>
-
-          <div>
-            <label for="telefono">Teléfono</label>
-            <input id="telefono" type="tel" placeholder="Ej. 8112345678" required />
-          </div>
-
-          <div>
-            <label for="fecha">Fecha</label>
-            <input id="fecha" type="date" required />
-          </div>
-
-          <div>
-            <label for="hora">Hora</label>
-            <input id="hora" type="time" required />
-          </div>
-
-          <!-- ORIGEN -->
-          <div>
-            <label for="origenTipo">Selecciona origen</label>
-            <select id="origenTipo" required>
-              <option value="">Selecciona origen</option>
-              <option value="Aeropuerto">Aeropuerto</option>
-              <option value="Hotel">Hotel</option>
-              <option value="Empresa">Empresa</option>
-              <option value="Domicilio">Domicilio</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="origenDireccion">Dirección de origen</label>
-            <input id="origenDireccion" type="text" placeholder="Ej. Av. Universidad 123, Monterrey" required />
-          </div>
-
-          <!-- DESTINO -->
-          <div>
-            <label for="destinoTipo">Selecciona destino</label>
-            <select id="destinoTipo" required>
-              <option value="">Selecciona destino</option>
-              <option value="Aeropuerto">Aeropuerto</option>
-              <option value="Hotel">Hotel</option>
-              <option value="Empresa">Empresa</option>
-              <option value="Domicilio">Domicilio</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="destinoDireccion">Dirección de destino</label>
-            <input id="destinoDireccion" type="text" placeholder="Ej. Hotel Fiesta Inn, San Pedro" required />
-          </div>
-
-          <div class="full">
-            <label for="vehiculo">Tipo de vehículo</label>
-            <select id="vehiculo" required>
-              <option value="">Selecciona tipo</option>
-              <option value="Económico">Económico</option>
-              <option value="Ejecutivo">Ejecutivo</option>
-              <option value="Van">Van</option>
-            </select>
-          </div>
-
-          <div class="full">
-            <button type="submit" class="boton">Reservar por WhatsApp</button>
-          </div>
-
-          <div class="full">
-            <div id="confirmacion" class="msg-ok">✅ Reserva preparada. Se abrirá WhatsApp en una nueva ventana.</div>
-          </div>
+    <form id="reservaForm" autocomplete="off">
+      <div class="grid">
+        <!-- Nombre y Teléfono -->
+        <div class="full">
+          <label for="nombre">Nombre completo</label>
+          <input id="nombre" type="text" placeholder="Tu nombre completo" required />
         </div>
-      </form>
-    </div>
+
+        <div class="full">
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" type="tel" placeholder="Ej. 8112345678" required />
+        </div>
+
+        <!-- Fecha y Hora -->
+        <div>
+          <label for="fecha">Fecha de reservación</label>
+          <input id="fecha" type="date" required />
+        </div>
+
+        <div>
+          <label for="hora">Hora de servicio</label>
+          <input id="hora" type="time" required />
+        </div>
+
+        <!-- ORIGEN: tipo + dirección -->
+        <div>
+          <label for="origenTipo">Selecciona origen</label>
+          <select id="origenTipo" required>
+            <option value="">Selecciona origen</option>
+            <option value="Aeropuerto">Aeropuerto</option>
+            <option value="Hotel">Hotel</option>
+            <option value="Empresa">Empresa</option>
+            <option value="Domicilio">Domicilio</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="origenDireccion">Dirección de origen</label>
+          <input id="origenDireccion" type="text" placeholder="Ej. Av. Universidad 123, Monterrey" required />
+        </div>
+
+        <!-- DESTINO: tipo + dirección -->
+        <div>
+          <label for="destinoTipo">Selecciona destino</label>
+          <select id="destinoTipo" required>
+            <option value="">Selecciona destino</option>
+            <option value="Aeropuerto">Aeropuerto</option>
+            <option value="Hotel">Hotel</option>
+            <option value="Empresa">Empresa</option>
+            <option value="Domicilio">Domicilio</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="destinoDireccion">Dirección de destino</label>
+          <input id="destinoDireccion" type="text" placeholder="Ej. Hotel Fiesta Inn, San Pedro" required />
+        </div>
+
+        <!-- Vehículo, personas, maletas -->
+        <div>
+          <label for="vehiculo">Tipo de vehículo</label>
+          <select id="vehiculo" required>
+            <option value="">Seleccione una opción</option>
+            <option value="Ejecutivo">Ejecutivo</option>
+            <option value="SUV">SUV</option>
+            <option value="Van">Van</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="personas">Cantidad de personas</label>
+          <input id="personas" type="number" min="1" max="10" placeholder="Ej. 2" required />
+        </div>
+
+        <div>
+          <label for="maletas">Cantidad de maletas</label>
+          <input id="maletas" type="number" min="0" max="10" placeholder="Ej. 3" required />
+        </div>
+
+        <div class="full">
+          <button type="submit" class="btn-reserva">Reservar por WhatsApp</button>
+        </div>
+
+        <div class="full">
+          <div id="confirmacion" class="msg-ok" role="status" aria-live="polite">✅ Reserva preparada. Se abrirá WhatsApp en una nueva ventana.</div>
+        </div>
+      </div>
+    </form>
   </main>
 
   <footer>
-    <p>© 2025 Transportes Ejecutivos | Servicio confiable y puntual</p>
+    <p>© 2025 Transporte Ejecutivos. Todos los derechos reservados.</p>
   </footer>
 
-  <script>
-    (function () {
-      const aeropuertoDireccion = "Carr. Miguel Alemán Km 24, 66600 Cdad. Apodaca, N.L.";
-
-      const origenTipo = document.getElementById("origenTipo");
-      const destinoTipo = document.getElementById("destinoTipo");
-      const origenDireccion = document.getElementById("origenDireccion");
-      const destinoDireccion = document.getElementById("destinoDireccion");
-      const form = document.getElementById("reservaForm");
-      const confirmBox = document.getElementById("confirmacion");
-
-      // Si seleccionan Aeropuerto en origen, autocompletar origen
-      origenTipo.addEventListener("change", () => {
-        if (origenTipo.value === "Aeropuerto") {
-          origenDireccion.value = aeropuertoDireccion;
-        } else {
-          // no borrar automáticamente si hay texto (permite editar), solo coloca vacío si estaba igual al aeropuerto
-          if (origenDireccion.value === aeropuertoDireccion) origenDireccion.value = "";
-        }
-      });
-
-      // Si seleccionan Aeropuerto en destino, autocompletar destino
-      destinoTipo.addEventListener("change", () => {
-        if (destinoTipo.value === "Aeropuerto") {
-          destinoDireccion.value = aeropuertoDireccion;
-        } else {
-          if (destinoDireccion.value === aeropuertoDireccion) destinoDireccion.value = "";
-        }
-      });
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // Obtener valores
-        const nombre = document.getElementById("nombre").value.trim();
-        const telefono = document.getElementById("telefono").value.trim();
-        const fecha = document.getElementById("fecha").value;
-        const hora = document.getElementById("hora").value;
-        const origenTipoVal = origenTipo.value;
-        const destinoTipoVal = destinoTipo.value;
-        const origenDirVal = origenDireccion.value.trim();
-        const destinoDirVal = destinoDireccion.value.trim();
-        const vehiculo = document.getElementById("vehiculo").value;
-
-        // Validar rápido
-        if (!nombre || !telefono || !fecha || !hora || !origenTipoVal || !destinoTipoVal || !origenDirVal || !destinoDirVal || !vehiculo) {
-          alert("Por favor completa todos los campos antes de enviar.");
-          return;
-        }
-
-        // Crear links de Google Maps (URLs planas)
-        const linkOrigen = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(origenDirVal)}`;
-        const linkDestino = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destinoDirVal)}`;
-
-        // Crear mensaje (texto plano, enlaces como URLs)
-        const mensaje =
-`🚘 NUEVA RESERVA - Transportes Ejecutivos
-----------------------------------------
-Nombre: ${nombre}
-Teléfono: ${telefono}
-Fecha: ${fecha}
-Hora: ${hora}
-
-ORIGEN:
-- Tipo: ${origenTipoVal}
-- Dirección: ${origenDirVal}
-- Ver en Maps: ${linkOrigen}
-
-DESTINO:
-- Tipo: ${destinoTipoVal}
-- Dirección: ${destinoDirVal}
-- Ver en Maps: ${linkDestino}
-
-Vehículo: ${vehiculo}
-
-*Solicitud enviada desde la página web*`;
-
-        // Enviar por WhatsApp
-        const numeroWhatsApp = "528111750448"; // puedes cambiarlo luego
-        const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-
-        // Mostrar confirmación visual breve
-        confirmBox.style.display = "block";
-
-        // Abrir WhatsApp en nueva pestaña
-        window.open(url, "_blank");
-
-        // limpiar formulario después de un pequeño delay para que el usuario vea confirmación
-        setTimeout(() => {
-          form.reset();
-          confirmBox.style.display = "none";
-        }, 1200);
-      });
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
