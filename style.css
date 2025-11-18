@@ -30,8 +30,9 @@ header p {
 main {
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column; /* ← necesario para que formulario y mapa se apilen */
+  justify-content: flex-start;
+  align-items: center;
   padding: 2rem;
 }
 
@@ -134,4 +135,22 @@ footer {
   form {
     padding: 1rem;
   }
+}
+
+/* =====================================================
+   ⭐ ESTILOS AGREGADOS PARA EL MAPA DE GOOGLE ⭐
+   ===================================================== */
+
+.map-wrapper {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.map-wrapper iframe {
+  width: 800px;
+  max-width: 100%;
+  height: 500px;
+  border: none;
 }

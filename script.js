@@ -9,7 +9,7 @@
   const form = document.getElementById("reservaForm");
   const confirmBox = document.getElementById("confirmacion");
 
-  // Autocompletar aeropuerto si se selecciona en origen o destino
+  // Autocompletar aeropuerto si se selecciona en origen
   origenTipo.addEventListener("change", () => {
     if (origenTipo.value === "Aeropuerto") {
       origenDireccion.value = aeropuertoDireccion;
@@ -18,6 +18,7 @@
     }
   });
 
+  // Autocompletar aeropuerto si se selecciona en destino
   destinoTipo.addEventListener("change", () => {
     if (destinoTipo.value === "Aeropuerto") {
       destinoDireccion.value = aeropuertoDireccion;
@@ -26,7 +27,7 @@
     }
   });
 
-  // Envío del formulario: generar mensaje con enlaces Maps y abrir WhatsApp
+  // Envío del formulario
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -44,17 +45,29 @@
     const maletas = document.getElementById("maletas").value;
 
     // Validación rápida
-    if (!nombre || !telefono || !fecha || !hora || !origenTipoVal || !destinoTipoVal || !origenDirVal || !destinoDirVal || !vehiculo || !personas || maletas === "") {
+    if (
+      !nombre ||
+      !telefono ||
+      !fecha ||
+      !hora ||
+      !origenTipoVal ||
+      !destinoTipoVal ||
+      !origenDirVal ||
+      !destinoDirVal ||
+      !vehiculo ||
+      !personas ||
+      maletas === ""
+    ) {
       alert("Por favor completa todos los campos antes de enviar.");
       return;
     }
 
-    // Crear links de Google Maps (URLs planas)
+    // Crear links de Google Maps
     const linkOrigen = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(origenDirVal)}`;
     const linkDestino = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destinoDirVal)}`;
 
-    // Mensaje plano para WhatsApp (enlaces como URLs)
-    const mensaje =
+    // Mensaje a enviar por WhatsApp
+    const mensaje = 
 `🚘 NUEVA RESERVA - Transporte Ejecutivos
 ----------------------------------------
 👤 Nombre: ${nombre}
@@ -78,17 +91,17 @@ DESTINO:
 
 *Solicitud enviada desde la página web*`;
 
-    // Número destino WhatsApp (cámbialo si necesitas)
+    // Número de WhatsApp de destino
     const numeroWhatsApp = "528111750448";
 
-    // Mostrar confirmación breve
+    // Mostrar mensaje de confirmación
     confirmBox.style.display = "block";
 
-    // Abrir WhatsApp en nueva pestaña con mensaje
+    // Abrir WhatsApp
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
 
-    // Limpiar formulario después de delay corto para que se vea la confirmación
+    // Limpiar formulario después de un momento
     setTimeout(() => {
       form.reset();
       confirmBox.style.display = "none";
