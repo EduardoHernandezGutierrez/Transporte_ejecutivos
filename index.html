@@ -3,16 +3,72 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transporte Ejecutivos</title>
+  <title>Transporte Ejecutivo E.H.M 2000</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Transporte Ejecutivos</h1>
-    <p>Servicio de transporte entre aeropuerto, hotel, empresa y domicilio</p>
-  </header>
+
+  <!-- header vacío para espaciado -->
+  <header></header>
+
+  <!-- HERO SLIDER / BANNER -->
+  <section class="hero-wrap">
+    <div class="hero-slider">
+
+      <!-- Slide 1 -->
+      <div class="card slide active" data-service="Traslado Aeropuerto">
+        <div class="card-left">
+          <div class="circle"></div>
+          <img src="auto.png" class="product-img" alt="Auto Ejecutivo">
+        </div>
+        <div class="card-content">
+          <h2>Transporte Ejecutivo E.H.M 2000</h2>
+          <p class="desc">Servicio seguro, puntual y profesional entre aeropuerto, hotel, empresa y domicilio.</p>
+          <a class="cta" href="#reservaForm">Reservar ahora</a>
+        </div>
+        <div class="shine"></div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="card slide" data-service="Traslado Corporativo">
+        <div class="card-left">
+          <div class="circle"></div>
+          <img src="auto.png" class="product-img" alt="Auto Ejecutivo">
+        </div>
+        <div class="card-content">
+          <h2>Transporte Ejecutivo E.H.M 2000</h2>
+          <p class="desc">Servicios corporativos y ejecutivos con chofer profesional y facturación.</p>
+          <a class="cta" href="#reservaForm">Solicitar cotización</a>
+        </div>
+        <div class="shine"></div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="card slide" data-service="Traslado VIP">
+        <div class="card-left">
+          <div class="circle"></div>
+          <img src="auto.png" class="product-img" alt="Auto Ejecutivo">
+        </div>
+        <div class="card-content">
+          <h2>Transporte Ejecutivo E.H.M 2000</h2>
+          <p class="desc">Atención VIP, vehículos premium y opciones personalizadas para eventos.</p>
+          <a class="cta" href="#reservaForm">Contáctanos</a>
+        </div>
+        <div class="shine"></div>
+      </div>
+
+      <!-- Slider controls -->
+      <div class="slider-controls">
+        <button class="prev" aria-label="Anterior">‹</button>
+        <div class="dots"></div>
+        <button class="next" aria-label="Siguiente">›</button>
+      </div>
+    </div>
+  </section>
 
   <main>
+
+    <!-- FORMULARIO (SIN CAMBIOS EN ESTRUCTURA) -->
     <form id="reservaForm" autocomplete="off">
       <div class="grid">
         <!-- Nombre y Teléfono -->
@@ -97,28 +153,26 @@
         </div>
 
         <div class="full">
-          <div id="confirmacion" class="msg-ok" role="status" aria-live="polite">
-            ✅ Reserva preparada. Se abrirá WhatsApp en una nueva ventana.
-          </div>
+          <div id="confirmacion" class="msg-ok" role="status" aria-live="polite">✅ Reserva preparada. Se abrirá WhatsApp en una nueva ventana.</div>
         </div>
       </div>
     </form>
 
-    <!-- MAPA -->
-    <div class="full" style="margin-top: 25px; width: 100%; text-align: center;">
-      <h2 style="margin-bottom: 10px;">Zonas de traslado</h2>
+    <!-- MAPA ABAJO -->
+    <div class="full map-wrap" style="margin-top: 35px;">
+      <h2 style="text-align:center; margin-bottom:10px;">Zonas de traslado</h2>
       <iframe 
         src="https://www.google.com/maps/d/embed?mid=1QyU2fUZnsq1eaaODmhomQY2TkrY87NY&ehbc=2E312F" 
         width="100%" 
         height="480" 
-        style="border:0; border-radius: 12px;">
+        style="border:0; border-radius:12px;">
       </iframe>
     </div>
 
   </main>
 
   <footer>
-    <p>© 2025 Transporte Ejecutivos. Todos los derechos reservados.</p>
+    <p>© 2025 Transporte Ejecutivo E.H.M 2000. Todos los derechos reservados.</p>
   </footer>
 
   <script src="script.js"></script>

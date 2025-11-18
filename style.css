@@ -1,4 +1,5 @@
-/* Base y layout */
+/* ================= BASE / LAYOUT ================= */
+* { box-sizing: border-box; }
 body {
   font-family: "Segoe UI", sans-serif;
   margin: 0;
@@ -9,34 +10,176 @@ body {
   flex-direction: column;
 }
 
-header {
-  text-align: center;
-  padding: 1.8rem 1rem;
-  background: #ffffff;
-  border-bottom: 1px solid #ddd;
+header { height: 18px; }
+
+/* ================= HERO SLIDER / CARD ================= */
+.hero-wrap { width: 100%; display:flex; justify-content:center; padding-top: 10px; }
+.hero-slider { position: relative; width: 95%; max-width: 1100px; }
+
+/* Slide / Card base */
+.card {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: 20px;
+  overflow: visible;
+  background: linear-gradient(135deg, #101216 0%, #16161b 60%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 200px;
+  box-shadow: 0 18px 40px rgba(10,10,15,0.45);
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(.2,.9,.3,1), box-shadow .25s ease;
 }
 
-header h1 {
-  margin: 0;
-  color: #222;
-  font-size: 1.8rem;
+/* Active slide */
+.card.active {
+  transform: translateY(0);
+  opacity: 1;
+  animation: slideUpIn .6s cubic-bezier(.2,.9,.3,1) forwards;
 }
 
-header p {
-  color: #555;
-  margin: 0.35rem 0 0;
+/* Left area (circle + image) */
+.card-left { position: absolute; left: -40px; top: -40px; width: 420px; height: 420px; overflow: visible; pointer-events: none; }
+
+/* glowing circle behind */
+.card .circle {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), rgba(64,169,255,0.08) 25%, rgba(0,0,0,0.0) 60%);
+  filter: blur(12px);
+  transform: scale(1);
+  transition: transform 0.5s ease;
+  z-index: 1;
 }
 
+/* shine layer (animated extra highlight) */
+.card .shine {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 50%;
+  height: 120%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.12), rgba(255,255,255,0.02) 40%, rgba(255,255,255,0.02) 60%, rgba(255,255,255,0.09));
+  transform: rotate(-20deg) translateX(-220%);
+  opacity: 0.35;
+  pointer-events: none;
+  transition: transform 1.2s linear;
+  z-index: 6;
+}
+
+/* product image (auto.png) - 3D transform origin center */
+.product-img {
+  position: absolute;
+  left: 40px;
+  bottom: 8px;
+  width: 300px;
+  transform-origin: center center;
+  transition: transform 0.18s ease, filter .25s ease, box-shadow .25s ease;
+  z-index: 5;
+  will-change: transform;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.45));
+  pointer-events: auto;
+}
+
+/* content area */
+.card-content {
+  padding: 28px 36px;
+  z-index: 7;
+  position: relative;
+  max-width: 640px;
+}
+
+.card-content h2 {
+  font-size: 2rem;
+  margin: 0 0 10px;
+  letter-spacing: 0.4px;
+}
+
+.card-content .desc {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 18px;
+  line-height: 1.35;
+  max-width: 760px;
+}
+
+/* CTA */
+.cta {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#2fb8ff,#2f7bff);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 26px rgba(47,123,255,0.28);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.cta:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(47,123,255,0.36); }
+
+/* shadow on hover */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 22px 52px rgba(10,10,15,0.6);
+}
+
+/* slider controls */
+.slider-controls {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:14px;
+  z-index: 10;
+}
+
+.slider-controls button {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.slider-controls button:hover { background: rgba(255,255,255,0.10); transform: translateY(-3px); }
+
+/* dots */
+.dots { display:flex; gap:8px; }
+.dots button {
+  width: 10px; height:10px; border-radius:50%;
+  background: rgba(255,255,255,0.14); border:none; cursor:pointer;
+}
+.dots button.active { background: #2fb8ff; box-shadow: 0 6px 16px rgba(47,123,255,0.22); }
+
+/* ================= ANIMATIONS ================== */
+@keyframes slideUpIn {
+  0% { transform: translateY(30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ================= FORM & REST (preserve styles) ================= */
 main {
   flex: 1;
   display: flex;
-  flex-direction: column; /* ← necesario para que formulario y mapa se apilen */
-  justify-content: flex-start;
+  flex-direction: column;
   align-items: center;
   padding: 2rem;
 }
 
-/* Form */
 form {
   background: #fff;
   padding: 1.6rem;
@@ -79,9 +222,7 @@ select {
   box-sizing: border-box;
 }
 
-input::placeholder {
-  color: #888;
-}
+input::placeholder { color: #888; }
 
 .btn-reserva {
   width: 100%;
@@ -95,13 +236,8 @@ input::placeholder {
   margin-top: 6px;
   transition: background .18s ease, transform .12s ease;
 }
+.btn-reserva:hover { background: #444; transform: translateY(-2px); }
 
-.btn-reserva:hover {
-  background: #444;
-  transform: translateY(-2px);
-}
-
-/* Confirmación */
 .msg-ok {
   display: none;
   background: #e9f7ee;
@@ -112,7 +248,7 @@ input::placeholder {
   font-weight: 600;
 }
 
-/* Footer */
+/* footer & responsive */
 footer {
   text-align: center;
   padding: 12px;
@@ -122,35 +258,20 @@ footer {
   background: #fff;
 }
 
-/* Responsive */
+@media (max-width: 900px) {
+  .card { padding-left: 140px; height: 320px; }
+  .card-left { width: 360px; height:360px; left:-20px; top:-20px; }
+  .product-img { width: 260px; left: 20px; }
+  .card .circle { width: 300px; height:300px; left:18px; top:18px; }
+}
+
 @media (max-width: 720px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  main {
-    padding: 1rem;
-  }
-
-  form {
-    padding: 1rem;
-  }
-}
-
-/* =====================================================
-   ⭐ ESTILOS AGREGADOS PARA EL MAPA DE GOOGLE ⭐
-   ===================================================== */
-
-.map-wrapper {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.map-wrapper iframe {
-  width: 800px;
-  max-width: 100%;
-  height: 500px;
-  border: none;
+  .grid { grid-template-columns: 1fr; }
+  main { padding: 1rem; }
+  form { padding: 1rem; }
+  .card { padding-left: 20px; height: auto; flex-direction: column; align-items: center; text-align:center; }
+  .card-left { position: relative; left:0; top:0; width: 100%; height: auto; }
+  .product-img { position: relative; width: 220px; margin-top: 6px; left:0; bottom: auto; }
+  .card-content { padding: 18px; }
+  .slider-controls { bottom: -10px; }
 }
